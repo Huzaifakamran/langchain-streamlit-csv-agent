@@ -1,4 +1,5 @@
 from langchain.agents import create_csv_agent
+from langchain.agents.agent_types import AgentType
 from langchain.llms import OpenAI
 from dotenv import load_dotenv
 import os
@@ -22,7 +23,7 @@ def main():
     if csv_file is not None:
 
         agent = create_csv_agent(
-            OpenAI(temperature=0), csv_file, verbose=True)
+            OpenAI(temperature=0), csv_file, verbose=True,agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
 
         user_question = st.text_input("Ask a question about your CSV: ")
 
